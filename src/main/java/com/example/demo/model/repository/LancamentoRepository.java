@@ -7,3 +7,5 @@ import com.example.demo.model.entity.Lancamento;
 public interface LancamentoRepository extends JpaRepository<Lancamento, Long> {
 
 }
+
+
