@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.exception.EmailJaExisteException;
+import com.example.demo.exception.RegraDeNegocioException;
 import com.example.demo.exception.ErroAutenticacaoException;
 import com.example.demo.model.entity.Usuario;
 import com.example.demo.model.repository.UsuarioRepository;
@@ -46,7 +46,7 @@ public class UsuarioServiceImpl implements UsuarioService{
 		boolean exists = usuarioRepository.existsByEmail(Email);
 		
 		if(exists) {
-			throw new EmailJaExisteException("Já existe um usuário cadastrado com este email");
+			throw new RegraDeNegocioException("Já existe um usuário cadastrado com este email");
 		}
 		
 	}

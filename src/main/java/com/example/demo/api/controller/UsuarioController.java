@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.api.dto.UsuarioDTO;
-import com.example.demo.exception.EmailJaExisteException;
+import com.example.demo.exception.RegraDeNegocioException;
 import com.example.demo.exception.ErroAutenticacaoException;
 import com.example.demo.model.entity.Usuario;
 import com.example.demo.service.UsuarioService;
@@ -35,7 +35,7 @@ public class UsuarioController {
 		try {
 			Usuario usuarioSalvo = service.salvarUsuario(usuario);
 			return new ResponseEntity<>(usuarioSalvo, HttpStatus.CREATED);
-		} catch (EmailJaExisteException e) {
+		} catch (RegraDeNegocioException e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 //			return new ResponseEntity<>(new ApiMessage(), HttpStatus.BAD_REQUEST);
 		}
